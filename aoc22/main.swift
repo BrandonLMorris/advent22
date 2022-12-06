@@ -1,11 +1,8 @@
-//
-//  main.swift
-//  aoc22
-//
-//  Created by Brandon Morris on 12/5/22.
-//
-
+/// Entry point for all Avdent of Code 2022 solutions.
 import Foundation
 
-print("Hello, World!")
+let inputDir = FileManager.default.currentDirectoryPath + "/input/"
+let fileInput = try String(contentsOfFile: inputDir + "day01.txt")
+let result = Day01().solve(input: fileInput.components(separatedBy: "\n"))
 
+print("Solution to day01 is \(result)")
