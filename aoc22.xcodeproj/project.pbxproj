@@ -14,6 +14,7 @@
 		E7926614293ED9480096BCA3 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79265FF293ECE4C0096BCA3 /* Day01.swift */; };
 		E7926616293EDC850096BCA3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7926615293EDC850096BCA3 /* Day.swift */; };
 		E7926617293EDC850096BCA3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7926615293EDC850096BCA3 /* Day.swift */; };
+		E792661A294040FB0096BCA3 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E7926619294040FB0096BCA3 /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E792661A294040FB0096BCA3 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +129,9 @@
 			dependencies = (
 			);
 			name = aoc22;
+			packageProductDependencies = (
+				E7926619294040FB0096BCA3 /* ArgumentParser */,
+			);
 			productName = aoc22;
 			productReference = E7675ABA293E776B00D1BBC3 /* aoc22 */;
 			productType = "com.apple.product-type.tool";
@@ -175,6 +180,9 @@
 				Base,
 			);
 			mainGroup = E7675AB1293E776B00D1BBC3;
+			packageReferences = (
+				E7926618294040FB0096BCA3 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = E7675ABB293E776B00D1BBC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -411,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7926618294040FB0096BCA3 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7926619294040FB0096BCA3 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7926618294040FB0096BCA3 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E7675AB2293E776B00D1BBC3 /* Project object */;
 }

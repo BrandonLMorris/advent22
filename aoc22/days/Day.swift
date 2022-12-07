@@ -1,5 +1,6 @@
 /// Interface for individual solutions.
 
 protocol Day {
-    func solve(input: [String]) -> String
+  func solvePart1(input: [String]) -> String
+  func solvePart2(input: [String]) -> String
 }
