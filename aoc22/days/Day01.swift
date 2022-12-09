@@ -14,7 +14,6 @@ class Day01: Day {
     let calorieTotals = calculateTotals(calorieCounts: input)
     let result = calorieTotals.sorted().reversed()[0...2].reduce(0, +)
     return String(result)
-    // return "TODO"
   }
 
   private func calculateTotals(calorieCounts: [String]) -> [Int] {

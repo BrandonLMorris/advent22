@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E757B8602942EECD0007FD6F /* day02.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E757B85F2942EE320007FD6F /* day02.txt */; };
 		E7675ABE293E776B00D1BBC3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7675ABD293E776B00D1BBC3 /* main.swift */; };
 		E7926600293ECE4C0096BCA3 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79265FF293ECE4C0096BCA3 /* Day01.swift */; };
 		E7926602293ED3230096BCA3 /* day01.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E7926601293ECFF50096BCA3 /* day01.txt */; };
@@ -15,6 +16,8 @@
 		E7926616293EDC850096BCA3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7926615293EDC850096BCA3 /* Day.swift */; };
 		E7926617293EDC850096BCA3 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7926615293EDC850096BCA3 /* Day.swift */; };
 		E792661A294040FB0096BCA3 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E7926619294040FB0096BCA3 /* ArgumentParser */; };
+		E792661C2942DC4A0096BCA3 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792661B2942DC4A0096BCA3 /* Day02.swift */; };
+		E792661D2942DC4A0096BCA3 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792661B2942DC4A0096BCA3 /* Day02.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,6 +27,7 @@
 			dstPath = input;
 			dstSubfolderSpec = 16;
 			files = (
+				E757B8602942EECD0007FD6F /* day02.txt in Copy Files */,
 				E7926602293ED3230096BCA3 /* day01.txt in Copy Files */,
 			);
 			name = "Copy Files";
@@ -32,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E757B85F2942EE320007FD6F /* day02.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = day02.txt; path = aoc22/input/day02.txt; sourceTree = SOURCE_ROOT; };
 		E7675ABA293E776B00D1BBC3 /* aoc22 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = aoc22; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7675ABD293E776B00D1BBC3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E79265FF293ECE4C0096BCA3 /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
@@ -39,6 +44,7 @@
 		E7926605293ED6370096BCA3 /* SampleInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInputTests.swift; sourceTree = "<group>"; };
 		E792660C293ED7590096BCA3 /* advent-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advent-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7926615293EDC850096BCA3 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		E792661B2942DC4A0096BCA3 /* Day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 		E79265FD293ECDEE0096BCA3 /* input */ = {
 			isa = PBXGroup;
 			children = (
+				E757B85F2942EE320007FD6F /* day02.txt */,
 				E7926601293ECFF50096BCA3 /* day01.txt */,
 			);
 			path = input;
@@ -101,6 +108,7 @@
 			children = (
 				E79265FF293ECE4C0096BCA3 /* Day01.swift */,
 				E7926615293EDC850096BCA3 /* Day.swift */,
+				E792661B2942DC4A0096BCA3 /* Day02.swift */,
 			);
 			path = days;
 			sourceTree = "<group>";
@@ -210,6 +218,7 @@
 			files = (
 				E7675ABE293E776B00D1BBC3 /* main.swift in Sources */,
 				E7926616293EDC850096BCA3 /* Day.swift in Sources */,
+				E792661C2942DC4A0096BCA3 /* Day02.swift in Sources */,
 				E7926600293ECE4C0096BCA3 /* Day01.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +229,7 @@
 			files = (
 				E7926613293ED8940096BCA3 /* SampleInputTests.swift in Sources */,
 				E7926617293EDC850096BCA3 /* Day.swift in Sources */,
+				E792661D2942DC4A0096BCA3 /* Day02.swift in Sources */,
 				E7926614293ED9480096BCA3 /* Day01.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = aoc22/input/day01.txt;
+				DEVELOPMENT_ASSET_PATHS = "aoc22/input/day02.txt aoc22/input aoc22/input/day01.txt";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -354,7 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = aoc22/input/day01.txt;
+				DEVELOPMENT_ASSET_PATHS = "aoc22/input/day02.txt aoc22/input aoc22/input/day01.txt";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

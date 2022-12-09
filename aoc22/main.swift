@@ -6,24 +6,25 @@ struct Advent: ParsableCommand {
   @Argument() var day: Int
 
   func run() throws {
-    guard validateArgs() else {
+    guard let solver = dayForArgument() else {
       return
     }
-
     let input = try getInput()
-    let solver = Day01()
     let result1 = solver.solvePart1(input: input)
     let result2 = solver.solvePart2(input: input)
-
-    print("Solution to day \(day):\n\(result1)\n\(result2)")
+    
+    print("Solution to day \(day):")
+    print("\tPart 1: \(result1)")
+    print("\tPart 2: \(result2)")
   }
 
-  func validateArgs() -> Bool {
-    if day < 1 || day > 1 {
+  func dayForArgument() -> Day? {
+    let days: [Day?] = [nil, Day01(), Day02()]
+    if day < 1 || day > days.count {
       print("ERROR: Day \(day) is either invalid or unimplemented")
-      return false
+      return nil
     }
-    return true
+    return days[day]
   }
 
   func getInput() throws -> [String] {
