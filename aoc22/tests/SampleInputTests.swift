@@ -15,6 +15,14 @@ final class SampleInputTests: XCTestCase {
     "ttgJtRGJQctTZtZT",
     "CrZsJsPPZsGzwwsLwLmpwMDw",
   ]
+  private let day4Input = [
+    "2-4,6-8",
+    "2-3,4-5",
+    "5-7,7-9",
+    "2-8,3-7",
+    "6-6,4-6",
+    "2-6,4-8",
+  ]
 
   func testDay01Part1SaampleInput() throws {
     let solution = Day01().solvePart1(input: day1Input)
@@ -46,5 +54,17 @@ final class SampleInputTests: XCTestCase {
     let solution = Day03().solvePart2(input: day3Input)
 
     XCTAssertEqual(solution, "70")
+  }
+
+  func testDay04Part1SampleInput() throws {
+    let solution = Day04().solvePart1(input: day4Input)
+
+    XCTAssertEqual(solution, "2")
+  }
+
+  func testDay04Part2SampleInput() throws {
+    let solution = Day04().solvePart2(input: day4Input)
+
+    XCTAssertEqual(solution, "4")
   }
 }
