@@ -12,7 +12,7 @@ struct Advent: ParsableCommand {
     let input = try getInput()
     let result1 = solver.solvePart1(input: input)
     let result2 = solver.solvePart2(input: input)
-    
+
     print("Solution to day \(day):")
     print("\tPart 1: \(result1)")
     print("\tPart 2: \(result2)")

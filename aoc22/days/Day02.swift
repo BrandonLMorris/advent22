@@ -12,6 +12,25 @@ enum RoundOutcome {
   case win, loss, draw
 }
 
+// opponentChoice -> playerChoice where the player wins
+let playerChoiceToWin: [HandShape: HandShape] = [
+  .rock: .paper, .paper: .scissors, .scissors: .rock,
+]
+// opponentChoice -> playerChoice where the player loses
+let playerChoiceToLose: [HandShape: HandShape] = [
+  .paper: .rock, .scissors: .paper, .rock: .scissors,
+]
+let choiceToShape: [String: HandShape] = [
+  "A": .rock, "X": .rock, "B": .paper, "Y": .paper, "C": .scissors, "Z": .scissors,
+]
+let playerChoiceScore: [HandShape: Int] = [.rock: 1, .paper: 2, .scissors: 3]
+let outcomeToScore: [RoundOutcome: Int] =
+  [
+    .win: 6,
+    .loss: 0,
+    .draw: 3,
+  ]
+
 class Day02: Day {
   func solvePart1(input: [String]) -> String {
     var total = 0
@@ -24,77 +43,51 @@ class Day02: Day {
   }
 
   func solvePart2(input: [String]) -> String {
-    return "TODO"
+    var score = 0
+    for roundLine in input {
+      if roundLine.isEmpty { continue }
+      let splitInput = roundLine.components(separatedBy: " ")
+      let opponent = choiceToShape[splitInput[0]]!
+      let inputToOutcome: [String: RoundOutcome] =
+        [
+          "X": .loss,
+          "Y": .draw,
+          "Z": .win,
+        ]
+      let outcome = inputToOutcome[splitInput[1]]!
+      let player = determinePlayerForOutcome(opponent: opponent, outcome: outcome)
+      score += playerChoiceScore[player]! + outcomeToScore[outcome]!
+    }
+    return String(score)
   }
-  
-  func calculateRoundScore(oppentChoice: String, playerChoice: String) -> Int {
-    let baseScores: [HandShape: Int] = [.rock: 1, .paper: 2, .scissors: 3]
-    
-    let opponent = createShape(choice: oppentChoice)!
-    let player = createShape(choice: playerChoice)!
-    
-    let baseScore = baseScores[player]!
-    return baseScore + outcomeSocre(outcome: play(opponent: opponent, player: player))
-  }
-  
-  func createShape(choice: String) -> HandShape? {
-    if choice == "A" || choice == "X" {
-      return .rock
-    }
-    if choice == "B" || choice == "Y" {
-      return .paper
-    }
-    if choice == "C" || choice == "Z" {
-      return .scissors
-    }
 
-    print("ERROR: Invalid choice '\(choice)'")
-    return nil
+  func calculateRoundScore(oppentChoice: String, playerChoice: String) -> Int {
+    let opponent = choiceToShape[oppentChoice]!
+    let player = choiceToShape[playerChoice]!
+
+    return playerChoiceScore[player]! + outcomeToScore[play(opponent: opponent, player: player)]!
   }
-  
+
   func play(opponent: HandShape, player: HandShape) -> RoundOutcome {
     if opponent == player {
       return .draw
     }
-    
-    if player == .rock {
-      if opponent == .scissors {
-        // rock beats scissors
-        return .win
-      } else {
-        // rock loses to paper
-        return .loss
-      }
-    }
-    
-    if player == .scissors {
-      if opponent == .paper {
-        // scissors beats paper
-        return .win
-      } else {
-        // scissors loses to rock
-        return .loss
-      }
-    }
-    
-    // player == .paper
-    if opponent == .rock {
-      // paper beats rock
+
+    if playerChoiceToWin[opponent] == player {
       return .win
     } else {
-      // paper loses to scissors
       return .loss
     }
   }
-  
-  func outcomeSocre(outcome: RoundOutcome) -> Int {
+
+  func determinePlayerForOutcome(opponent: HandShape, outcome: RoundOutcome) -> HandShape {
     switch outcome {
-    case .win:
-      return 6
-    case .loss:
-      return 0
     case .draw:
-      return 3
+      return opponent
+    case .win:
+      return playerChoiceToWin[opponent]!
+    case .loss:
+      return playerChoiceToLose[opponent]!
     }
   }
 }
