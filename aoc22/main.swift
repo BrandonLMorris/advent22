@@ -19,8 +19,8 @@ struct Advent: ParsableCommand {
   }
 
   func dayForArgument() -> Day? {
-    let days: [Day?] = [nil, Day01(), Day02()]
-    if day < 1 || day > days.count {
+    let days: [Day?] = [nil, Day01(), Day02(), Day03()]
+    if day < 1 || day > days.count - 1 {
       print("ERROR: Day \(day) is either invalid or unimplemented")
       return nil
     }
