@@ -41,4 +41,10 @@ final class SampleInputTests: XCTestCase {
 
     XCTAssertEqual(solution, "157")
   }
+
+  func testDay03Part2SampleInput() throws {
+    let solution = Day03().solvePart2(input: day3Input)
+
+    XCTAssertEqual(solution, "70")
+  }
 }

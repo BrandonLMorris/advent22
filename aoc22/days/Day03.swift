@@ -15,7 +15,9 @@ class Day03: Day {
   }
 
   func solvePart2(input: [String]) -> String {
-    return "TODO"
+    let elfGroups = toElfGroups(input.filter({ !$0.isEmpty }))
+    let totalPritoriy = elfGroups.map({ toPriority(item: $0.badge) }).reduce(0, +)
+    return String(totalPritoriy)
   }
 
   func splitRucksack(_ contents: String) -> ([Character], [Character]) {
@@ -26,7 +28,7 @@ class Day03: Day {
     return (firstCompartment, secondCompartment)
   }
 
-  func determineCommonItem(firstCompartment: [Character], secondCompartment: [Character])
+  private func determineCommonItem(firstCompartment: [Character], secondCompartment: [Character])
     -> Character
   {
     return Set(firstCompartment).intersection(Set(secondCompartment)).first!
@@ -38,5 +40,41 @@ class Day03: Day {
     } else {
       return Int(item.asciiValue! - Character("A").asciiValue! + 27)
     }
+  }
+
+  // Parse each line as an "elf" and group into three's
+  func toElfGroups(_ input: [String]) -> [ElfGroup] {
+    var toReturn: [ElfGroup] = []
+    var idx = 0
+    while idx < input.count {
+      let elfGroup = ElfGroup(
+        elves: (
+          Elf(rucksack: Array(input[idx])),
+          Elf(rucksack: Array(input[idx + 1])),
+          Elf(rucksack: Array(input[idx + 2]))
+        ))
+      toReturn.append(elfGroup)
+      idx += 3
+    }
+    return toReturn
+  }
+
+}
+
+struct Elf {
+  let rucksack: [Character]
+}
+
+struct ElfGroup {
+  let elves: (Elf, Elf, Elf)
+}
+
+extension ElfGroup {
+  var badge: Character {
+    // The badge is the item common to all three elves
+    return Set(elves.0.rucksack)
+      .intersection(elves.1.rucksack)
+      .intersection(elves.2.rucksack)
+      .first!
   }
 }
