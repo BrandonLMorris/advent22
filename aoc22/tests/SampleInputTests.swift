@@ -84,4 +84,9 @@ final class SampleInputTests: XCTestCase {
 
     XCTAssertEqual(solution, "CMZ")
   }
+
+  func testDay05Part2SampleInput() throws {
+    let solution = Day05().solvePart2(input: day5Input)
+    XCTAssertEqual(solution, "MCD")
+  }
 }

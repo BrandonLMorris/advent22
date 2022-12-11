@@ -6,22 +6,30 @@ import Foundation
 
 class Day05: Day {
   func solvePart1(input: [String]) -> String {
-    let (crateInput, instructionsInput) = splitInput(input)
-    var crates = parseCrateStacks(crateInput)
-    let operations = instructionsInput.map({CraneOperation($0)})
-    for operation in operations {
-      crates = crates.applyOperation(operation)
-    }
+    var (crates, operations) = parseCratesAndInstructions(input)
+    operations.forEach({ crates = crates.applyOperation($0) })
+    return stacksTopCrateLabels(crateStacks: crates)
+  }
+
+  func solvePart2(input: [String]) -> String {
+    var (crates, operations) = parseCratesAndInstructions(input)
+    operations.forEach({ crates = crates.applyAdvancedOperation($0) })
+    return stacksTopCrateLabels(crateStacks: crates)
+  }
+
+  func stacksTopCrateLabels(crateStacks: CrateStacks) -> String {
     var result: [Character] = []
-    for stack in crates.stacks {
+    for stack in crateStacks.stacks {
       if stack.isEmpty { continue }
       result.append(stack.last!.label)
     }
     return String(result)
   }
 
-  func solvePart2(input: [String]) -> String {
-    return "TODO"
+  func parseCratesAndInstructions(_ input: [String]) -> (CrateStacks, [CraneOperation]) {
+    let (crateInput, instructionsInput) = splitInput(input)
+    let operations = instructionsInput.map({CraneOperation($0)})
+    return (parseCrateStacks(crateInput), operations)
   }
   
   func parseCrateStacks(_ crateInput: [String]) -> CrateStacks {
@@ -73,6 +81,23 @@ extension CrateStacks {
     }
     
     return CrateStacks(stacks: origStacks)
+  }
+  
+  // Applies the crane operation using the "CraneMover 9001" which
+  // can pick up multiple crates at once (i.e. preserves stack ordering
+  // across moves).
+  func applyAdvancedOperation(_ operation: CraneOperation) -> CrateStacks {
+    var stacks = self.stacks
+    
+    var tmp: [Crate] = []
+    for _ in 0..<operation.count {
+      tmp.append(stacks[operation.fromStack-1].popLast()!)
+    }
+    for _ in 0..<operation.count {
+      stacks[operation.toStack-1].append(tmp.popLast()!)
+    }
+    
+    return CrateStacks(stacks: stacks)
   }
 }
 
