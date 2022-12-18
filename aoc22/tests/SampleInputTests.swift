@@ -34,6 +34,7 @@ final class SampleInputTests: XCTestCase {
     "move 2 from 2 to 1",
     "move 1 from 1 to 2",
   ]
+  private let day6Input = ["mjqjpqmgbljsphdztnvjfqwrcgsmlb"]
 
   func testDay01Part1SaampleInput() throws {
     let solution = Day01().solvePart1(input: day1Input)
@@ -88,5 +89,15 @@ final class SampleInputTests: XCTestCase {
   func testDay05Part2SampleInput() throws {
     let solution = Day05().solvePart2(input: day5Input)
     XCTAssertEqual(solution, "MCD")
+  }
+  
+  func testDay06Part1SampleInput() throws {
+    let solution = Day06().solvePart1(input: day6Input)
+    XCTAssertEqual(solution, "7")
+  }
+
+  func testDay06Part2SampleInput() throws {
+    let solution = Day06().solvePart2(input: day6Input)
+    XCTAssertEqual(solution, "19")
   }
 }
