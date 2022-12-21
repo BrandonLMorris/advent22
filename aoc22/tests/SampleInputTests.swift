@@ -35,6 +35,31 @@ final class SampleInputTests: XCTestCase {
     "move 1 from 1 to 2",
   ]
   private let day6Input = ["mjqjpqmgbljsphdztnvjfqwrcgsmlb"]
+  private let day7Input = [
+    "$ cd /",
+    "$ ls",
+    "dir a",
+    "14848514 b.txt",
+    "8504156 c.dat",
+    "dir d",
+    "$ cd a",
+    "$ ls",
+    "dir e",
+    "29116 f",
+    "2557 g",
+    "62596 h.lst",
+    "$ cd e",
+    "$ ls",
+    "584 i",
+    "$ cd ..",
+    "$ cd ..",
+    "$ cd d",
+    "$ ls",
+    "4060174 j",
+    "8033020 d.log",
+    "5626152 d.ext",
+    "7214296 k",
+  ]
 
   func testDay01Part1SaampleInput() throws {
     let solution = Day01().solvePart1(input: day1Input)
@@ -99,5 +124,10 @@ final class SampleInputTests: XCTestCase {
   func testDay06Part2SampleInput() throws {
     let solution = Day06().solvePart2(input: day6Input)
     XCTAssertEqual(solution, "19")
+  }
+  
+  func testDay07Part1SampleInput() throws {
+    let solution = Day07().solvePart1(input: day7Input)
+     XCTAssertEqual(solution, "95437")
   }
 }
