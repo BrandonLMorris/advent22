@@ -8,7 +8,14 @@ internal struct Day08: Day {
   }
 
   func solvePart2(input: [String]) -> String {
-    return "TODO"
+    var result = 0
+    let forest = Forest(input)
+    for x in 1..<input.count - 1 {
+      for y in 1..<input.count - 1 {
+        result = max(forest.scenicScore(row: x, col: y), result)
+      }
+    }
+    return String(result)
   }
 }
 
@@ -103,5 +110,46 @@ private struct Forest {
         tallestSoFar = trees[row][col]
       }
     }
+  }
+
+  func scenicScore(row: Int, col: Int) -> Int {
+    let maxIdx = trees.count - 1
+    let treehouseHeight = trees[row][col]
+    var curRow = row
+    var curCol = col
+
+    // Looking up
+    var upCount = 0
+    repeat {
+      upCount += 1
+      curRow -= 1
+    } while curRow > 0 && trees[curRow][col] < treehouseHeight
+    curRow = row
+
+    // Down
+    var downCount = 0
+    repeat {
+      downCount += 1
+      curRow += 1
+    } while curRow < maxIdx && trees[curRow][col] < treehouseHeight
+    curRow = row
+
+    // Right
+    var rightCount = 0
+    repeat {
+      rightCount += 1
+      curCol += 1
+    } while curCol < maxIdx && trees[row][curCol] < treehouseHeight
+    curCol = col
+
+    // Left
+    var leftCount = 0
+    repeat {
+      leftCount += 1
+      curCol -= 1
+    } while curCol > 0 && trees[row][curCol] < treehouseHeight
+    curCol = col
+
+    return upCount * downCount * leftCount * rightCount
   }
 }

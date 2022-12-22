@@ -145,6 +145,6 @@ final class SampleInputTests: XCTestCase {
 
   func testDay08Part2SampleInput() throws {
     let solution = Day08().solvePart2(input: day8Input)
-    XCTAssertEqual(solution, "TODO")
+    XCTAssertEqual(solution, "8")
   }
 }
