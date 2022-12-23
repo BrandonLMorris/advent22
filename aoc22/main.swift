@@ -29,6 +29,7 @@ struct Advent: ParsableCommand {
       Day06(),
       Day07(),
       Day08(),
+      Day09(),
     ]
     if day < 1 || day > days.count - 1 {
       print("ERROR: Day \(day) is either invalid or unimplemented")
