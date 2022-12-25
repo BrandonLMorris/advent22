@@ -10,7 +10,25 @@ internal struct Day10: Day {
   }
 
   func solvePart2(input: [String]) -> String {
-    return "TODO"
+    var registerValues = executeCommands(input)
+
+    // Add the intial state, since we return the value
+    // of the register *after* each cycle.
+    registerValues = [1] + registerValues
+
+    var rows: [String] = []
+    var row = ""
+    for idx in 0..<registerValues.count - 1 {
+      if (idx % 40) == 0 {
+        rows.append(row)
+        row = ""
+      }
+      let isVisible = abs(registerValues[idx] - (idx % 40)) <= 1
+      row.append(isVisible ? "#" : ".")
+    }
+    rows.append(row)
+
+    return rows.joined(separator: "\n")
   }
 
   private func executeCommands(_ commands: [String]) -> [Int] {
