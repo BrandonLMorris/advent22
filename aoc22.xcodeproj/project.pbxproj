@@ -39,6 +39,10 @@
 		E757B88C295558EC0007FD6F /* Day10.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757B88A295558EC0007FD6F /* Day10.swift */; };
 		E757B88E29555C2A0007FD6F /* day10.txt in Resources */ = {isa = PBXBuildFile; fileRef = E757B88D29555C2A0007FD6F /* day10.txt */; };
 		E757B88F29555C3D0007FD6F /* day10.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E757B88D29555C2A0007FD6F /* day10.txt */; };
+		E757B8932957EF860007FD6F /* Day11.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757B8922957EF860007FD6F /* Day11.swift */; };
+		E757B8942957EF860007FD6F /* Day11.swift in Sources */ = {isa = PBXBuildFile; fileRef = E757B8922957EF860007FD6F /* Day11.swift */; };
+		E757B8962957F1780007FD6F /* day11.txt in Resources */ = {isa = PBXBuildFile; fileRef = E757B8952957F1780007FD6F /* day11.txt */; };
+		E757B8972957F1860007FD6F /* day11.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E757B8952957F1780007FD6F /* day11.txt */; };
 		E7675ABE293E776B00D1BBC3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7675ABD293E776B00D1BBC3 /* main.swift */; };
 		E7926600293ECE4C0096BCA3 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79265FF293ECE4C0096BCA3 /* Day01.swift */; };
 		E7926602293ED3230096BCA3 /* day01.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E7926601293ECFF50096BCA3 /* day01.txt */; };
@@ -58,6 +62,7 @@
 			dstPath = input;
 			dstSubfolderSpec = 16;
 			files = (
+				E757B8972957F1860007FD6F /* day11.txt in Copy Files */,
 				E757B88F29555C3D0007FD6F /* day10.txt in Copy Files */,
 				E757B88929553A2C0007FD6F /* day09.txt in Copy Files */,
 				E757B8832953CBD40007FD6F /* day08.txt in Copy Files */,
@@ -92,6 +97,8 @@
 		E757B88729553A270007FD6F /* day09.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day09.txt; sourceTree = "<group>"; };
 		E757B88A295558EC0007FD6F /* Day10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day10.swift; sourceTree = "<group>"; };
 		E757B88D29555C2A0007FD6F /* day10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day10.txt; sourceTree = "<group>"; };
+		E757B8922957EF860007FD6F /* Day11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day11.swift; sourceTree = "<group>"; };
+		E757B8952957F1780007FD6F /* day11.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day11.txt; sourceTree = "<group>"; };
 		E7675ABA293E776B00D1BBC3 /* aoc22 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = aoc22; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7675ABD293E776B00D1BBC3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E79265FF293ECE4C0096BCA3 /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 		E79265FD293ECDEE0096BCA3 /* input */ = {
 			isa = PBXGroup;
 			children = (
+				E757B8952957F1780007FD6F /* day11.txt */,
 				E757B88D29555C2A0007FD6F /* day10.txt */,
 				E757B88729553A270007FD6F /* day09.txt */,
 				E757B8812953CBCC0007FD6F /* day08.txt */,
@@ -180,6 +188,7 @@
 				E757B87E29538BC90007FD6F /* Day08.swift */,
 				E757B884295539D00007FD6F /* Day09.swift */,
 				E757B88A295558EC0007FD6F /* Day10.swift */,
+				E757B8922957EF860007FD6F /* Day11.swift */,
 			);
 			path = days;
 			sourceTree = "<group>";
@@ -284,6 +293,7 @@
 				E757B88829553A270007FD6F /* day09.txt in Resources */,
 				E757B86A29451DAF0007FD6F /* day04.txt in Resources */,
 				E757B88E29555C2A0007FD6F /* day10.txt in Resources */,
+				E757B8962957F1780007FD6F /* day11.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7675ABE293E776B00D1BBC3 /* main.swift in Sources */,
+				E757B8932957EF860007FD6F /* Day11.swift in Sources */,
 				E7926616293EDC850096BCA3 /* Day.swift in Sources */,
 				E757B87329469CA50007FD6F /* Day06.swift in Sources */,
 				E757B86D294525DC0007FD6F /* Day05.swift in Sources */,
@@ -314,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7926613293ED8940096BCA3 /* SampleInputTests.swift in Sources */,
+				E757B8942957EF860007FD6F /* Day11.swift in Sources */,
 				E7926617293EDC850096BCA3 /* Day.swift in Sources */,
 				E757B87429469CA50007FD6F /* Day06.swift in Sources */,
 				E757B86E294525DC0007FD6F /* Day05.swift in Sources */,

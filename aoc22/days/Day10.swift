@@ -1,6 +1,6 @@
-/// Solution to Advent of Code 2022 Day 9.
+/// Solution to Advent of Code 2022 Day 10.
 ///
-/// https://adventofcode.com/2022/day/9
+/// https://adventofcode.com/2022/day/10
 
 internal struct Day10: Day {
   func solvePart1(input: [String]) -> String {
