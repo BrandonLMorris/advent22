@@ -107,6 +107,14 @@ final class SampleInputTests: XCTestCase {
     If true: throw to monkey 0
     If false: throw to monkey 1
     """.components(separatedBy: "\n")
+  private let day12Input =
+    """
+    Sabqponm
+    abcryxxl
+    accszExk
+    acctuvwj
+    abdefghi
+    """.components(separatedBy: "\n")
   
   func testDay01Part1SaampleInput() throws {
     let solution = Day01().solvePart1(input: day1Input)
@@ -201,5 +209,15 @@ final class SampleInputTests: XCTestCase {
   func testDay11Part2SampleInput() throws {
     let solution = Day11().solvePart2(input: day11Input)
     XCTAssertEqual(solution, "2713310158")
+  }
+
+  func testDay12Part1SampleInput() throws {
+    let solution = Day12().solvePart1(input: day12Input)
+    XCTAssertEqual(solution, "31")
+  }
+
+  func testDay12Part2SampleInput() throws {
+    let solution = Day12().solvePart2(input: day12Input)
+    XCTAssertEqual(solution, "TODO")
   }
 }
