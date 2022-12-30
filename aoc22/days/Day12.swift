@@ -8,22 +8,33 @@ internal struct Day12: Day {
     return String(map.distanceToTop)
   }
 
-  func solvePart2(input: [String]) -> String { return "TODO" }
+  func solvePart2(input: [String]) -> String {
+    var map = AltitudeMap(lines: input)
+    return String(map.shortestCompleteDistance)
+  }
 }
 
 fileprivate struct AltitudeMap {
   private let altitudes: [[Int]]
   private let start: Point
   private let end: Point
+  private let lowestPoints: [Point]
 
   lazy var distanceToTop: Int = {
-    computeDistance()
+    computeDistance(from: start)
+  }()
+  
+  lazy var shortestCompleteDistance: Int = {
+    // Note: This is *exteremely* inefficient, since we're effectively recalcualting
+    // distances for lots of points multiple times.
+    lowestPoints.map({ computeDistance(from: $0) }).filter({ $0 > 0 }).min()!
   }()
 
   init(lines: [String]) {
     var start: Point? = nil
     var end: Point? = nil
     var alts: [[Int]] = []
+    var starts: [Point] = []
 
     for row in 0..<lines.count {
       var altRow: [Int] = []
@@ -33,6 +44,17 @@ fileprivate struct AltitudeMap {
 
         let rowIdx = line.index(line.startIndex, offsetBy: col)
         altRow.append(line[rowIdx].toAltitude())
+        switch line[rowIdx] {
+        case "S":
+          start = Point(row: row, col: col)
+          starts.append(Point(row: row, col: col))
+        case "a":
+          starts.append(Point(row: row, col: col))
+        case "E":
+          end = Point(row: row, col: col)
+        default:
+          break
+        }
         if line[rowIdx] == "S" { start = Point(row: row, col: col) }
         if line[rowIdx] == "E" { end = Point(row: row, col: col) }
       }
@@ -42,12 +64,13 @@ fileprivate struct AltitudeMap {
     altitudes = alts
     self.start = start!
     self.end = end!
+    lowestPoints = starts
   }
 
-  private func computeDistance() -> Int {
+  private func computeDistance(from startPoint: Point) -> Int {
     var visited = Set<Point>()
-    var toVisit = [start]
-    var distances: [Point: Int] = [start: 0]
+    var toVisit = [startPoint]
+    var distances: [Point: Int] = [startPoint: 0]
 
     while !toVisit.isEmpty {
       let current = toVisit.removeFirst()
