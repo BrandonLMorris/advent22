@@ -2,258 +2,218 @@
 import XCTest
 
 final class SampleInputTests: XCTestCase {
-  private let day1Input = [
-    "1000", "2000", "3000", "", "4000", "", "5000", "6000", "", "7000", "8000", "9000", "",
-    "10000",
-  ]
-  private let day2Input = ["A Y", "B X", "C Z"]
-  private let day3Input = [
-    "vJrwpWtwJgWrhcsFMMfFFhFp",
-    "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
-    "PmmdzqPrVvPwwTWBwg",
-    "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
-    "ttgJtRGJQctTZtZT",
-    "CrZsJsPPZsGzwwsLwLmpwMDw",
-  ]
-  private let day4Input = [
-    "2-4,6-8",
-    "2-3,4-5",
-    "5-7,7-9",
-    "2-8,3-7",
-    "6-6,4-6",
-    "2-6,4-8",
-  ]
-  private let day5Input = [
-    "    [D]    ",
-    "[N] [C]    ",
-    "[Z] [M] [P]",
-    " 1   2   3 ",
-    "",
-    "move 1 from 2 to 1",
-    "move 3 from 1 to 3",
-    "move 2 from 2 to 1",
-    "move 1 from 1 to 2",
-  ]
-  private let day6Input = ["mjqjpqmgbljsphdztnvjfqwrcgsmlb"]
-  private let day7Input = [
-    "$ cd /",
-    "$ ls",
-    "dir a",
-    "14848514 b.txt",
-    "8504156 c.dat",
-    "dir d",
-    "$ cd a",
-    "$ ls",
-    "dir e",
-    "29116 f",
-    "2557 g",
-    "62596 h.lst",
-    "$ cd e",
-    "$ ls",
-    "584 i",
-    "$ cd ..",
-    "$ cd ..",
-    "$ cd d",
-    "$ ls",
-    "4060174 j",
-    "8033020 d.log",
-    "5626152 d.ext",
-    "7214296 k",
-  ]
-  private let day8Input = [
-    "30373",
-    "25512",
-    "65332",
-    "33549",
-    "35390",
-  ]
-  private let day9Input = [
-    "R 4",
-    "U 4",
-    "L 3",
-    "D 1",
-    "R 4",
-    "D 1",
-    "L 5",
-    "R 2",
-  ]
-  private let day11Input =
-    """
-    Monkey 0:
-    Starting items: 79, 98
-    Operation: new = old * 19
-    Test: divisible by 23
-    If true: throw to monkey 2
-    If false: throw to monkey 3
-    
-    Monkey 1:
-    Starting items: 54, 65, 75, 74
-    Operation: new = old + 6
-    Test: divisible by 19
-    If true: throw to monkey 2
-    If false: throw to monkey 0
-    
-    Monkey 2:
-    Starting items: 79, 60, 97
-    Operation: new = old * old
-    Test: divisible by 13
-    If true: throw to monkey 1
-    If false: throw to monkey 3
-    
-    Monkey 3:
-    Starting items: 74
-    Operation: new = old + 3
-    Test: divisible by 17
-    If true: throw to monkey 0
-    If false: throw to monkey 1
-    """.components(separatedBy: "\n")
-  private let day12Input =
-    """
-    Sabqponm
-    abcryxxl
-    accszExk
-    acctuvwj
-    abdefghi
-    """.components(separatedBy: "\n")
-  private let day13Input =
-    """
-    [1,1,3,1,1]
-    [1,1,5,1,1]
 
-    [[1],[2,3,4]]
-    [[1],4]
-
-    [9]
-    [[8,7,6]]
-
-    [[4,4],4,4]
-    [[4,4],4,4,4]
-
-    [7,7,7,7]
-    [7,7,7]
-
-    []
-    [3]
-
-    [[[]]]
-    [[]]
-
-    [1,[2,[3,[4,[5,6,7]]]],8,9]
-    [1,[2,[3,[4,[5,6,0]]]],8,9]
-    """.components(separatedBy: "\n")
-  
-  func testDay01Part1SaampleInput() throws {
-    let solution = Day01().solvePart1(input: day1Input)
-    XCTAssertEqual(solution, "24000")
+  private func sampleInputTest(
+    _ day: Day, _ input: [String], part1Answer: String, part2Answer: String?
+  ) {
+    XCTAssertEqual(day.solvePart1(input: input), part1Answer)
+    if let part2Answer = part2Answer {
+      XCTAssertEqual(day.solvePart2(input: input), part2Answer)
+    }
   }
 
-  func testDay01Part2SaampleInput() throws {
-    let solution = Day01().solvePart2(input: day1Input)
-    XCTAssertEqual(solution, "45000")
+  func testDay1() throws {
+    let input =
+      """
+      1000
+      2000
+      3000
+
+      4000
+
+      5000
+      6000
+
+      7000
+      8000
+      9000
+
+      10000
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day01(), input, part1Answer: "24000", part2Answer: "45000")
   }
 
-  func testDay02Part1SampleInput() throws {
-    let solution = Day02().solvePart1(input: day2Input)
-    XCTAssertEqual(solution, "15")
+  func testDay2() throws {
+    let input = ["A Y", "B X", "C Z"]
+    sampleInputTest(Day02(), input, part1Answer: "15", part2Answer: "12")
   }
 
-  func testDay02Part2SampleInput() throws {
-    let solution = Day02().solvePart2(input: day2Input)
-    XCTAssertEqual(solution, "12")
+  func testDay3() throws {
+    let input =
+      """
+      vJrwpWtwJgWrhcsFMMfFFhFp
+      jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+      PmmdzqPrVvPwwTWBwg
+      wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+      ttgJtRGJQctTZtZT
+      CrZsJsPPZsGzwwsLwLmpwMDw
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day03(), input, part1Answer: "157", part2Answer: "70")
   }
 
-  func testDay03Part1SampleInput() throws {
-    let solution = Day03().solvePart1(input: day3Input)
-
-    XCTAssertEqual(solution, "157")
+  func testDay4() throws {
+    let input =
+      """
+      2-4,6-8
+      2-3,4-5
+      5-7,7-9
+      2-8,3-7
+      6-6,4-6
+      2-6,4-8
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day04(), input, part1Answer: "2", part2Answer: "4")
   }
 
-  func testDay03Part2SampleInput() throws {
-    let solution = Day03().solvePart2(input: day3Input)
-
-    XCTAssertEqual(solution, "70")
+  func testDay5() throws {
+    let input = [
+      "    [D]    ",
+      "[N] [C]    ",
+      "[Z] [M] [P]",
+      " 1   2   3 ",
+      "",
+      "move 1 from 2 to 1",
+      "move 3 from 1 to 3",
+      "move 2 from 2 to 1",
+      "move 1 from 1 to 2",
+    ]
+    sampleInputTest(Day05(), input, part1Answer: "CMZ", part2Answer: "MCD")
   }
 
-  func testDay04Part1SampleInput() throws {
-    let solution = Day04().solvePart1(input: day4Input)
-
-    XCTAssertEqual(solution, "2")
+  func testDay6() throws {
+    let input = ["mjqjpqmgbljsphdztnvjfqwrcgsmlb"]
+    sampleInputTest(Day06(), input, part1Answer: "7", part2Answer: "19")
   }
 
-  func testDay04Part2SampleInput() throws {
-    let solution = Day04().solvePart2(input: day4Input)
-
-    XCTAssertEqual(solution, "4")
+  func testDay7() throws {
+    let input =
+      """
+      $ cd /
+      $ ls
+      dir a
+      14848514 b.txt
+      8504156 c.dat
+      dir d
+      $ cd a
+      $ ls
+      dir e
+      29116 f
+      2557 g
+      62596 h.lst
+      $ cd e
+      $ ls
+      584 i
+      $ cd ..
+      $ cd ..
+      $ cd d
+      $ ls
+      4060174 j
+      8033020 d.log
+      5626152 d.ext
+      7214296 k
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day07(), input, part1Answer: "95437", part2Answer: nil)
   }
 
-  func testDay05Part1SampleInput() throws {
-    let solution = Day05().solvePart1(input: day5Input)
-
-    XCTAssertEqual(solution, "CMZ")
+  func testDay8() throws {
+    let input =
+      """
+      30373
+      25512
+      65332
+      33549
+      35390
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day08(), input, part1Answer: "21", part2Answer: "8")
   }
 
-  func testDay05Part2SampleInput() throws {
-    let solution = Day05().solvePart2(input: day5Input)
-    XCTAssertEqual(solution, "MCD")
+  func testDay9() throws {
+    let input =
+      """
+      R 4
+      U 4
+      L 3
+      D 1
+      R 4
+      D 1
+      L 5
+      R 2
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day09(), input, part1Answer: "13", part2Answer: nil)
   }
 
-  func testDay06Part1SampleInput() throws {
-    let solution = Day06().solvePart1(input: day6Input)
-    XCTAssertEqual(solution, "7")
+  func testDay11() throws {
+    let input =
+      """
+      Monkey 0:
+      Starting items: 79, 98
+      Operation: new = old * 19
+      Test: divisible by 23
+      If true: throw to monkey 2
+      If false: throw to monkey 3
+
+      Monkey 1:
+      Starting items: 54, 65, 75, 74
+      Operation: new = old + 6
+      Test: divisible by 19
+      If true: throw to monkey 2
+      If false: throw to monkey 0
+
+      Monkey 2:
+      Starting items: 79, 60, 97
+      Operation: new = old * old
+      Test: divisible by 13
+      If true: throw to monkey 1
+      If false: throw to monkey 3
+
+      Monkey 3:
+      Starting items: 74
+      Operation: new = old + 3
+      Test: divisible by 17
+      If true: throw to monkey 0
+      If false: throw to monkey 1
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day11(), input, part1Answer: "10605", part2Answer: "2713310158")
   }
 
-  func testDay06Part2SampleInput() throws {
-    let solution = Day06().solvePart2(input: day6Input)
-    XCTAssertEqual(solution, "19")
+  func testDay12() throws {
+    let input =
+      """
+      Sabqponm
+      abcryxxl
+      accszExk
+      acctuvwj
+      abdefghi
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day12(), input, part1Answer: "31", part2Answer: "29")
   }
 
-  func testDay07Part1SampleInput() throws {
-    let solution = Day07().solvePart1(input: day7Input)
-    XCTAssertEqual(solution, "95437")
-  }
+  func testDay13() throws {
+    let input =
+      """
+      [1,1,3,1,1]
+      [1,1,5,1,1]
 
-  func testDay08Part1SampleInput() throws {
-    let solution = Day08().solvePart1(input: day8Input)
-    XCTAssertEqual(solution, "21")
-  }
+      [[1],[2,3,4]]
+      [[1],4]
 
-  func testDay08Part2SampleInput() throws {
-    let solution = Day08().solvePart2(input: day8Input)
-    XCTAssertEqual(solution, "8")
-  }
+      [9]
+      [[8,7,6]]
 
-  func testDay09Part1SampleInput() throws {
-    let solution = Day09().solvePart1(input: day9Input)
-    XCTAssertEqual(solution, "13")
-  }
-  
-  func testDay11Part1SampleInput() throws {
-    let solution = Day11().solvePart1(input: day11Input)
-    XCTAssertEqual(solution, "10605")
-  }
-  
-  func testDay11Part2SampleInput() throws {
-    let solution = Day11().solvePart2(input: day11Input)
-    XCTAssertEqual(solution, "2713310158")
-  }
+      [[4,4],4,4]
+      [[4,4],4,4,4]
 
-  func testDay12Part1SampleInput() throws {
-    let solution = Day12().solvePart1(input: day12Input)
-    XCTAssertEqual(solution, "31")
-  }
+      [7,7,7,7]
+      [7,7,7]
 
-  func testDay12Part2SampleInput() throws {
-    let solution = Day12().solvePart2(input: day12Input)
-    XCTAssertEqual(solution, "29")
-  }
+      []
+      [3]
 
-  func testDay13Part1SampleInput() throws {
-    let solution = Day13().solvePart1(input: day13Input)
-    XCTAssertEqual(solution, "13")
-  }
+      [[[]]]
+      [[]]
 
-  func testDay13Part2SampleInput() throws {
-    let solution = Day13().solvePart2(input: day13Input)
-    XCTAssertEqual(solution, "TODO")
+      [1,[2,[3,[4,[5,6,7]]]],8,9]
+      [1,[2,[3,[4,[5,6,0]]]],8,9]
+      """.components(separatedBy: "\n")
+    sampleInputTest(Day13(), input, part1Answer: "13", part2Answer: "TODO")
   }
 }
