@@ -115,6 +115,32 @@ final class SampleInputTests: XCTestCase {
     acctuvwj
     abdefghi
     """.components(separatedBy: "\n")
+  private let day13Input =
+    """
+    [1,1,3,1,1]
+    [1,1,5,1,1]
+
+    [[1],[2,3,4]]
+    [[1],4]
+
+    [9]
+    [[8,7,6]]
+
+    [[4,4],4,4]
+    [[4,4],4,4,4]
+
+    [7,7,7,7]
+    [7,7,7]
+
+    []
+    [3]
+
+    [[[]]]
+    [[]]
+
+    [1,[2,[3,[4,[5,6,7]]]],8,9]
+    [1,[2,[3,[4,[5,6,0]]]],8,9]
+    """.components(separatedBy: "\n")
   
   func testDay01Part1SaampleInput() throws {
     let solution = Day01().solvePart1(input: day1Input)
@@ -218,6 +244,16 @@ final class SampleInputTests: XCTestCase {
 
   func testDay12Part2SampleInput() throws {
     let solution = Day12().solvePart2(input: day12Input)
+    XCTAssertEqual(solution, "29")
+  }
+
+  func testDay13Part1SampleInput() throws {
+    let solution = Day13().solvePart1(input: day13Input)
+    XCTAssertEqual(solution, "13")
+  }
+
+  func testDay13Part2SampleInput() throws {
+    let solution = Day13().solvePart2(input: day13Input)
     XCTAssertEqual(solution, "TODO")
   }
 }

@@ -57,6 +57,10 @@
 		E792661A294040FB0096BCA3 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E7926619294040FB0096BCA3 /* ArgumentParser */; };
 		E792661C2942DC4A0096BCA3 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792661B2942DC4A0096BCA3 /* Day02.swift */; };
 		E792661D2942DC4A0096BCA3 /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792661B2942DC4A0096BCA3 /* Day02.swift */; };
+		E7B1BAAD295F82280063A337 /* Day13.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1BAAC295F82280063A337 /* Day13.swift */; };
+		E7B1BAAE295F82280063A337 /* Day13.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B1BAAC295F82280063A337 /* Day13.swift */; };
+		E7B1BAB0295F84790063A337 /* day13.txt in Resources */ = {isa = PBXBuildFile; fileRef = E7B1BAAF295F84790063A337 /* day13.txt */; };
+		E7B1BAB1295F84840063A337 /* day13.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E7B1BAAF295F84790063A337 /* day13.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +70,7 @@
 			dstPath = input;
 			dstSubfolderSpec = 16;
 			files = (
+				E7B1BAB1295F84840063A337 /* day13.txt in Copy Files */,
 				E757B89A29594DCC0007FD6F /* day12.txt in Copy Files */,
 				E757B8972957F1860007FD6F /* day11.txt in Copy Files */,
 				E757B88F29555C3D0007FD6F /* day10.txt in Copy Files */,
@@ -114,6 +119,8 @@
 		E792660C293ED7590096BCA3 /* advent-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advent-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7926615293EDC850096BCA3 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		E792661B2942DC4A0096BCA3 /* Day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02.swift; sourceTree = "<group>"; };
+		E7B1BAAC295F82280063A337 /* Day13.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day13.swift; sourceTree = "<group>"; };
+		E7B1BAAF295F84790063A337 /* day13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day13.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +173,7 @@
 		E79265FD293ECDEE0096BCA3 /* input */ = {
 			isa = PBXGroup;
 			children = (
+				E7B1BAAF295F84790063A337 /* day13.txt */,
 				E757B89829594DC70007FD6F /* day12.txt */,
 				E757B8952957F1780007FD6F /* day11.txt */,
 				E757B88D29555C2A0007FD6F /* day10.txt */,
@@ -198,6 +206,7 @@
 				E757B88A295558EC0007FD6F /* Day10.swift */,
 				E757B8922957EF860007FD6F /* Day11.swift */,
 				E757B89B29594DE20007FD6F /* Day12.swift */,
+				E7B1BAAC295F82280063A337 /* Day13.swift */,
 			);
 			path = days;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				E757B88829553A270007FD6F /* day09.txt in Resources */,
 				E757B86A29451DAF0007FD6F /* day04.txt in Resources */,
 				E757B88E29555C2A0007FD6F /* day10.txt in Resources */,
+				E7B1BAB0295F84790063A337 /* day13.txt in Resources */,
 				E757B89929594DC70007FD6F /* day12.txt in Resources */,
 				E757B8962957F1780007FD6F /* day11.txt in Resources */,
 			);
@@ -322,6 +332,7 @@
 				E757B86729451CE20007FD6F /* Day04.swift in Sources */,
 				E757B88B295558EC0007FD6F /* Day10.swift in Sources */,
 				E792661C2942DC4A0096BCA3 /* Day02.swift in Sources */,
+				E7B1BAAD295F82280063A337 /* Day13.swift in Sources */,
 				E757B862294509620007FD6F /* Day03.swift in Sources */,
 				E7926600293ECE4C0096BCA3 /* Day01.swift in Sources */,
 				E757B87F29538BC90007FD6F /* Day08.swift in Sources */,
@@ -343,6 +354,7 @@
 				E757B86829451CE20007FD6F /* Day04.swift in Sources */,
 				E757B88C295558EC0007FD6F /* Day10.swift in Sources */,
 				E792661D2942DC4A0096BCA3 /* Day02.swift in Sources */,
+				E7B1BAAE295F82280063A337 /* Day13.swift in Sources */,
 				E757B8632945096C0007FD6F /* Day03.swift in Sources */,
 				E7926614293ED9480096BCA3 /* Day01.swift in Sources */,
 				E757B88029538BC90007FD6F /* Day08.swift in Sources */,
