@@ -18,32 +18,66 @@ internal struct Day13: Day {
   }
 
   func solvePart2(input: [String]) -> String {
-    return "TODO"
+    var packets = parsePackets(input)
+    let firstDivider = Packet(line: "[[2]]")
+    let secondDivider = Packet(line: "[[6]]")
+    packets.append(firstDivider)
+    packets.append(secondDivider)
+
+    packets.sort()
+
+    let result =
+      (packets.firstIndex(of: firstDivider)! + 1) * (packets.firstIndex(of: secondDivider)! + 1)
+
+    return String(result)
   }
 
-  private func parsePacketPairs(_ input: [String]) -> [(Packet, Packet)] {
-    var packetPairs: [(Packet, Packet)] = []
+  private func parsePackets(_ input: [String]) -> [Packet] {
+    var packets: [Packet] = []
     var lineIdx = 0
     var packetIdx = 1
 
     while lineIdx < input.count && !input[lineIdx].isEmpty {
-      let left = Packet(line: input[lineIdx])
-      let right = Packet(line: input[lineIdx + 1])
-      packetPairs.append((left, right))
+      packets.append(Packet(line: input[lineIdx]))
+      packets.append(Packet(line: input[lineIdx + 1]))
 
       // Two lines of packets plus one blank separating line
       lineIdx += 3
       packetIdx += 1
     }
-    return packetPairs
+    return packets
+  }
+
+  private func parsePacketPairs(_ input: [String]) -> [(Packet, Packet)] {
+    let packets = parsePackets(input)
+    var pairs: [(Packet, Packet)] = []
+    for idx in stride(from: 0, to: packets.count, by: 2) {
+      pairs.append((packets[idx], packets[idx + 1]))
+    }
+    return pairs
   }
 }
 
-private struct Packet {
+private struct Packet: Comparable {
   private let contents: [PacketContents]
 
   init(line: String) {
     contents = [PacketContents(list: line)]
+  }
+
+  static func < (lhs: Packet, rhs: Packet) -> Bool {
+    if let comparison = PacketContents.compare(
+      lhs: .listValue(lhs.contents), rhs: .listValue(rhs.contents))
+    {
+      return comparison
+    }
+    // compare() returns nil if the contents are equal
+    return false
+  }
+
+  static func == (lhs: Packet, rhs: Packet) -> Bool {
+    return PacketContents.compare(lhs: .listValue(lhs.contents), rhs: .listValue(rhs.contents))
+      == nil
   }
 
   static func inOrder(_ left: Packet, _ right: Packet) -> Bool {
@@ -126,7 +160,7 @@ private struct Packet {
           return compareLists(leftList, rightList)
         }
       }
-      
+
       func compareLists(_ left: [PacketContents], _ right: [PacketContents]) -> Bool? {
         var idx = 0
         while idx < max(left.count, right.count) {

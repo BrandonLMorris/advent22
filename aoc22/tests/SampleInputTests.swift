@@ -214,6 +214,6 @@ final class SampleInputTests: XCTestCase {
       [1,[2,[3,[4,[5,6,7]]]],8,9]
       [1,[2,[3,[4,[5,6,0]]]],8,9]
       """.components(separatedBy: "\n")
-    sampleInputTest(Day13(), input, part1Answer: "13", part2Answer: "TODO")
+    sampleInputTest(Day13(), input, part1Answer: "13", part2Answer: "140")
   }
 }
