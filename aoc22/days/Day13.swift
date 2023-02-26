@@ -2,7 +2,7 @@
 //  Day13.swift
 //  aoc22
 //
-//  https://adventofcode.com/2022/day/12
+//  https://adventofcode.com/2022/day/13
 //
 
 internal struct Day13: Day {
