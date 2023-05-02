@@ -244,7 +244,7 @@ final class SampleInputTests: XCTestCase {
       Sensor at x=14, y=3: closest beacon is at x=15, y=3
       Sensor at x=20, y=1: closest beacon is at x=15, y=3
       """.components(separatedBy: "\n")
-    let day = Day15(rowOfInterest: 10)
-    sampleInputTest(day, input, part1Answer: "26", part2Answer: "TODO")
+    let day = Day15(rowOfInterest: 10, searchRestriction: 20)
+    sampleInputTest(day, input, part1Answer: "26", part2Answer: "56000011")
   }
 }

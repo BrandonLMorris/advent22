@@ -7,9 +7,11 @@
 
 internal struct Day15: Day {
   let rowOfInterest: Int
+  let searchRestriction: Int
 
-  init(rowOfInterest: Int = 2_000_000) {
+  init(rowOfInterest: Int = 2_000_000, searchRestriction: Int = 4_000_000) {
     self.rowOfInterest = rowOfInterest
+    self.searchRestriction = searchRestriction
   }
 
   func solvePart1(input: [String]) -> String {
@@ -30,7 +32,29 @@ internal struct Day15: Day {
   }
 
   func solvePart2(input: [String]) -> String {
-    return "TODO"
+    let sensors = [Sensor](input)
+    var y = 0
+    while y <= searchRestriction {
+      var x = 0
+      while x <= searchRestriction {
+        let current = Point(x: x, y: y)
+        var covered = false
+        for sensor in sensors {
+          if sensor.location.dist(to: current) <= sensor.radius {
+            // Jump to the right edge of the radius, in the current row
+            x = sensor.location.x + sensor.radius - abs(current.y - sensor.location.y) + 1
+            covered = true
+            break
+          }
+        }
+        if !covered {
+          return String(current.x * 4_000_000 + current.y)
+        }
+        // x has already been updated since this point is covered
+      }
+      y += 1
+    }
+    return "ERROR"
   }
 }
 
