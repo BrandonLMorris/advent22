@@ -10,8 +10,14 @@ struct Advent: ParsableCommand {
       return
     }
     let input = try getInput()
+    var start = Date()
     let result1 = solver.solvePart1(input: input)
+    var elapsed = Date().timeIntervalSince(start)
+    print("Solved part 1 in \(String(format: "%.2f", elapsed))")
+    start = Date()
     let result2 = solver.solvePart2(input: input)
+    elapsed = Date().timeIntervalSince(start)
+    print("Solved part 2 in \(String(format: "%.2f", elapsed))")
 
     print("Solution to day \(day):")
     print("\tPart 1: \(result1)")
@@ -36,6 +42,7 @@ struct Advent: ParsableCommand {
       Day13(),
       Day14(),
       Day15(),
+      Day16(),
     ]
     if day < 1 || day > days.count - 1 {
       print("ERROR: Day \(day) is either invalid or unimplemented")
