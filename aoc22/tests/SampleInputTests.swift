@@ -264,4 +264,9 @@ final class SampleInputTests: XCTestCase {
       """.components(separatedBy: "\n")
     sampleInputTest(Day16(), input, part1Answer: "1651", part2Answer: "1707")
   }
+  
+  func testDay17() throws {
+    let input = [">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>", ""]
+    sampleInputTest(Day17(), input, part1Answer: "3068", part2Answer: "TODO")
+  }
 }
