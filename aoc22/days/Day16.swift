@@ -9,15 +9,28 @@ internal struct Day16: Day {
 
   func solvePart1(input: [String]) -> String {
     var cave = Cave(input.filter { !$0.isEmpty })
+    let possibleStates = createPossibleStates(&cave, time: 30)
+    let maxPressure = possibleStates.max(by: { $0.pressure < $1.pressure })!.pressure
+    return "\(maxPressure)"
+  }
+
+  func solvePart2(input: [String]) -> String {
+    var cave = Cave(input.filter { !$0.isEmpty })
+    let possibleStates = createPossibleStates(&cave, time: 26)
+    let maxPressure = maxPressureOfTwoStates(possibleStates, cave: cave)
+    return "\(maxPressure)"
+  }
+
+  private func createPossibleStates(_ cave: inout Cave, time: Int) -> [CaveState] {
     let distances = cave.createDistanceMatrix()
 
     let initial = CaveState(
-      currentValve: cave.valves["AA"], visited: Set<Valve>(), minutesLeft: 30, pressure: 0)
+      currentValve: cave.valves["AA"], visited: Set<Valve>(), minutesLeft: time, pressure: 0)
     var queue = [initial]
-    var maxPressure = initial.pressure
+    var possibleStates = [CaveState]()
 
     while let current = queue.popLast() {
-      maxPressure = max(maxPressure, current.pressure)
+      possibleStates.append(current)
 
       // Consider each valve with non-zero flow as possible next
       for maybeNext in cave.positiveFlowValves {
@@ -26,11 +39,24 @@ internal struct Day16: Day {
         }
       }
     }
-
-    return "\(maxPressure)"
+    return possibleStates
   }
 
-  func solvePart2(input: [String]) -> String { return "TODO" }
+  private func maxPressureOfTwoStates(_ caveStates: [CaveState], cave: Cave) -> Int {
+    let initValve = cave.valves["AA"]
+    var maxPressure = -1
+    for i in 0..<caveStates.count {
+      for j in i..<caveStates.count {
+        let state1 = caveStates[i]
+        let state2 = caveStates[j]
+        if state1.visited.intersection(state2.visited).subtracting([initValve]).isEmpty {
+          // No overlapping valves
+          maxPressure = max(maxPressure, state1.pressure + state2.pressure)
+        }
+      }
+    }
+    return maxPressure
+  }
 }
 
 private struct Valve: Equatable, Hashable, CustomStringConvertible {

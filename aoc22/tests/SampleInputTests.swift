@@ -262,6 +262,6 @@ final class SampleInputTests: XCTestCase {
       Valve II has flow rate=0; tunnels lead to valves AA, JJ
       Valve JJ has flow rate=21; tunnel leads to valve II
       """.components(separatedBy: "\n")
-    sampleInputTest(Day16(), input, part1Answer: "1651", part2Answer: "TODO")
+    sampleInputTest(Day16(), input, part1Answer: "1651", part2Answer: "1707")
   }
 }
