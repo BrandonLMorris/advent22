@@ -267,6 +267,6 @@ final class SampleInputTests: XCTestCase {
   
   func testDay17() throws {
     let input = [">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>", ""]
-    sampleInputTest(Day17(), input, part1Answer: "3068", part2Answer: "TODO")
+    sampleInputTest(Day17(), input, part1Answer: "3068", part2Answer: "1514285714288")
   }
 }

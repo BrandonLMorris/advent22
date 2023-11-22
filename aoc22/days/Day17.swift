@@ -9,11 +9,39 @@ internal struct Day17: Day {
   func solvePart1(input: [String]) -> String {
     let jetPattern = input.filter { !$0.isEmpty }.first!
     let chamber = Chamber(jetPatternString: jetPattern)
-    while (chamber.fallenRocks < 2022) { chamber.tick() }
+    while chamber.fallenRocks < 2022 { chamber.tick() }
     return "\(chamber.highestRow)"
   }
 
-  func solvePart2(input: [String]) -> String { return "TODO" }
+  func solvePart2(input: [String]) -> String {
+    let rockTarget = 1_000_000_000_000
+    let chamber = Chamber(jetPatternString: input.filter { !$0.isEmpty }.first!)
+
+    var chamberStates = [ChamberState: (height: Int, rocks: Int)]()
+    var rockCount = 0
+    var heightAddedByCycles = 0
+    var rocksAddedByCycles = 0
+
+    var foundCycle = false
+    while rockCount < rockTarget {
+      chamber.tickUntilRockFalls()
+      rockCount = chamber.fallenRocks + rocksAddedByCycles
+      if !foundCycle {
+        let state = ChamberState(chamber)
+        if let oldState = chamberStates[state] {
+          foundCycle = true
+          let cycleHeightDelta = chamber.highestRow - oldState.height
+          let cycleRocksDelta = chamber.fallenRocks - oldState.rocks
+          let skippedCycles = (rockTarget - chamber.fallenRocks) / cycleRocksDelta
+          rocksAddedByCycles = skippedCycles * cycleRocksDelta
+          heightAddedByCycles = skippedCycles * cycleHeightDelta
+        } else {
+          chamberStates[state] = (height: chamber.highestRow, rocks: chamber.fallenRocks)
+        }
+      }
+    }
+    return "\(chamber.highestRow + heightAddedByCycles)"
+  }
 }
 
 /// The tall, vertical chamber through which rocks fall.
@@ -26,14 +54,22 @@ private class Chamber {
   var stationaryRocks = Set<Point>()
   private(set) var fallenRocks = 0
   private(set) var highestRow = 0
+  private(set) var highestPerColumn = Array(repeating: 0, count: 7)
   private let jetPattern: [Direction]
-  private var jetPatternIdx = 0
+  var jetPatternIdx = 0
   private var fallingRock: Rock? = nil
 
   let rockShapeOrder: [Rock.RockShape] = [.horizontal, .plus, .angle, .vertical, .square]
 
   init(jetPatternString: String) {
     jetPattern = jetPatternString.compactMap { Direction.create($0) }
+  }
+
+  func tickUntilRockFalls() {
+    let oldRockCount = fallenRocks
+    while fallenRocks == oldRockCount {
+      tick()
+    }
   }
 
   func tick() {
@@ -51,9 +87,10 @@ private class Chamber {
     // Try to make the rock fall one unit. Failure here means the rock can't
     // fall any more, so update our state and counters.
     if !fall() {
-      fallingRock!.points.forEach {
-        highestRow = max(highestRow, $0.y + 1)
-        stationaryRocks.insert($0)
+      fallingRock!.points.forEach { rockPoint in
+        highestRow = max(highestRow, rockPoint.y + 1)
+        stationaryRocks.insert(rockPoint)
+        highestPerColumn[rockPoint.x] = max(highestPerColumn[rockPoint.x], rockPoint.y)
       }
       fallingRock = nil
       fallenRocks += 1
@@ -204,5 +241,19 @@ private struct Rock {
       Point(on.x + 2, on.y + 1),
       Point(on.x + 2, on.y + 2),
     ])
+  }
+}
+
+private struct ChamberState: Hashable, Equatable {
+  let relativeHeights: [Int]
+  let jetPatternIdx: Int
+  let rockPatternIdx: Int
+
+  init(_ chamber: Chamber) {
+    let heights = chamber.highestPerColumn
+    let lowest = heights.min()!
+    self.relativeHeights = heights.map { $0 - lowest }
+    self.jetPatternIdx = chamber.jetPatternIdx
+    self.rockPatternIdx = chamber.fallenRocks % chamber.rockShapeOrder.count
   }
 }
