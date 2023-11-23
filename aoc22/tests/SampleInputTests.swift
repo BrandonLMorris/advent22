@@ -264,12 +264,12 @@ final class SampleInputTests: XCTestCase {
       """.components(separatedBy: "\n")
     sampleInputTest(Day16(), input, part1Answer: "1651", part2Answer: "1707")
   }
-  
+
   func testDay17() throws {
     let input = [">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>", ""]
     sampleInputTest(Day17(), input, part1Answer: "3068", part2Answer: "1514285714288")
   }
-  
+
   func testDay18() throws {
     let input =
       """
@@ -287,6 +287,6 @@ final class SampleInputTests: XCTestCase {
       2,1,5
       2,3,5
       """.components(separatedBy: "\n")
-    sampleInputTest(Day18(), input, part1Answer: "64", part2Answer: "TODO")
+    sampleInputTest(Day18(), input, part1Answer: "64", part2Answer: "58")
   }
 }
