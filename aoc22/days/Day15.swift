@@ -58,40 +58,39 @@ internal struct Day15: Day {
   }
 }
 
-fileprivate extension Array where Element == Sensor {
-  init(_ inputLines: [String]) {
+extension Array where Element == Sensor {
+  fileprivate init(_ inputLines: [String]) {
     self = inputLines.filter { !$0.isEmpty }.map { Sensor($0) }
   }
 
   /// The minimum x value that could posibly be covered by these sensors.
-  var minX: Int {
+  fileprivate var minX: Int {
     let maxRadius = self.max(by: { $0.radius < $1.radius })!.radius
     let minX = self.min(by: { $0.location.x < $1.location.x })!.location.x
     return minX - maxRadius
   }
 
   /// The maximum x value that could posibly be covered by these sensors.
-  var maxX: Int {
+  fileprivate var maxX: Int {
     let maxRadius = self.max(by: { $0.radius < $1.radius })!.radius
     let maxX = self.max(by: { $0.location.x < $1.location.x })!.location.x
     return maxX + maxRadius
   }
 
-  func covers(_ point: Point) -> Bool {
+  fileprivate func covers(_ point: Point) -> Bool {
     return self.contains { sensor in
       sensor.location.dist(to: point) <= sensor.radius
     }
   }
 
-  var sensorLocations: [Point] {
+  fileprivate var sensorLocations: [Point] {
     self.map { $0.location }
   }
 
-  var beacons: [Point] {
+  fileprivate var beacons: [Point] {
     self.map { $0.beacon }
   }
 }
-
 
 private struct Point: Equatable, Hashable, CustomStringConvertible {
   let x: Int

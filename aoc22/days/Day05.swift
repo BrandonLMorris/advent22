@@ -28,10 +28,10 @@ class Day05: Day {
 
   func parseCratesAndInstructions(_ input: [String]) -> (CrateStacks, [CraneOperation]) {
     let (crateInput, instructionsInput) = splitInput(input)
-    let operations = instructionsInput.map({CraneOperation($0)})
+    let operations = instructionsInput.map({ CraneOperation($0) })
     return (parseCrateStacks(crateInput), operations)
   }
-  
+
   func parseCrateStacks(_ crateInput: [String]) -> CrateStacks {
     // Each stack takes 4 characters, except the last whcih takes 3
     // NOTE: This assumes that each line is padded with whitespace, even
@@ -48,15 +48,15 @@ class Day05: Day {
         }
       }
     }
-    
+
     return CrateStacks(stacks: stacks)
   }
-  
+
   private func splitInput(_ input: [String]) -> ([String], [String]) {
     let divider = input.firstIndex(of: "")!
-    
-    let crateInput = input[..<(divider-1)]
-    let instructionsInput = input[(divider+1)...].filter({!$0.isEmpty})
+
+    let crateInput = input[..<(divider - 1)]
+    let instructionsInput = input[(divider + 1)...].filter({ !$0.isEmpty })
     return (Array(crateInput), Array(instructionsInput))
   }
 }
@@ -73,30 +73,30 @@ struct CrateStacks {
 extension CrateStacks {
   func applyOperation(_ operation: CraneOperation) -> CrateStacks {
     var origStacks = self.stacks
-    
+
     for _ in 0..<operation.count {
       // Stacks are 1-based indexed in the input
-      let toMove = origStacks[operation.fromStack-1].popLast()!
-      origStacks[operation.toStack-1].append(toMove)
+      let toMove = origStacks[operation.fromStack - 1].popLast()!
+      origStacks[operation.toStack - 1].append(toMove)
     }
-    
+
     return CrateStacks(stacks: origStacks)
   }
-  
+
   // Applies the crane operation using the "CraneMover 9001" which
   // can pick up multiple crates at once (i.e. preserves stack ordering
   // across moves).
   func applyAdvancedOperation(_ operation: CraneOperation) -> CrateStacks {
     var stacks = self.stacks
-    
+
     var tmp: [Crate] = []
     for _ in 0..<operation.count {
-      tmp.append(stacks[operation.fromStack-1].popLast()!)
+      tmp.append(stacks[operation.fromStack - 1].popLast()!)
     }
     for _ in 0..<operation.count {
-      stacks[operation.toStack-1].append(tmp.popLast()!)
+      stacks[operation.toStack - 1].append(tmp.popLast()!)
     }
-    
+
     return CrateStacks(stacks: stacks)
   }
 }

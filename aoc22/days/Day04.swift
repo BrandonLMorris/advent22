@@ -48,7 +48,7 @@ extension SectionAssignment {
   func contains(_ other: SectionAssignment) -> Bool {
     return self.start <= other.start && self.end >= other.end
   }
-  
+
   func overlaps(_ other: SectionAssignment) -> Bool {
     // If there's no overlap, this interval has to end before
     // the other begins or begin after the other one ends.

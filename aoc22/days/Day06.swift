@@ -6,11 +6,11 @@ class Day06: Day {
   func solvePart1(input: [String]) -> String {
     return startLocationForWindowSize(dataStream: input.first!, windowSize: 4)
   }
-  
+
   func solvePart2(input: [String]) -> String {
     return startLocationForWindowSize(dataStream: input.first!, windowSize: 14)
   }
-  
+
   func startLocationForWindowSize(dataStream: String, windowSize: Int) -> String {
     var idx = 0
     while idx < dataStream.count {
@@ -21,7 +21,7 @@ class Day06: Day {
       idx += 1
     }
     return "ERROR: No Start sequence found"
-  
+
   }
 }
 
@@ -32,7 +32,7 @@ struct DataStreamWindow {
 extension DataStreamWindow {
   init(dataStream: String, startIndex: Int, size: Int) {
     let allContents = Array(dataStream)
-    contents = Array(allContents[startIndex..<startIndex+size])
+    contents = Array(allContents[startIndex..<startIndex + size])
   }
 
   func allUnique() -> Bool {
