@@ -66,6 +66,9 @@
 		E7B1BAB0295F84790063A337 /* day13.txt in Resources */ = {isa = PBXBuildFile; fileRef = E7B1BAAF295F84790063A337 /* day13.txt */; };
 		E7B1BAB1295F84840063A337 /* day13.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E7B1BAAF295F84790063A337 /* day13.txt */; };
 		E7BAC5742A0184930007ECED /* day16.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E7BAC5732A01848D0007ECED /* day16.txt */; };
+		E7C36C8E2B0EBDEA0091C621 /* Day18.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C36C8D2B0EBDEA0091C621 /* Day18.swift */; };
+		E7C36C8F2B0EBE940091C621 /* Day18.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C36C8D2B0EBDEA0091C621 /* Day18.swift */; };
+		E7C36C932B0EC2C50091C621 /* day18.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = E7C36C922B0EC2BC0091C621 /* day18.txt */; };
 		E7D2809A2A896B7000A7C89A /* Day17.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D280992A896B7000A7C89A /* Day17.swift */; };
 		E7D2809B2A896B7000A7C89A /* Day17.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D280992A896B7000A7C89A /* Day17.swift */; };
 		E7D2809D2A896BBC00A7C89A /* day17.txt in Resources */ = {isa = PBXBuildFile; fileRef = E7D2809C2A896BBC00A7C89A /* day17.txt */; };
@@ -85,6 +88,7 @@
 			dstPath = input;
 			dstSubfolderSpec = 16;
 			files = (
+				E7C36C932B0EC2C50091C621 /* day18.txt in Copy Files */,
 				E7D2809E2A896BD300A7C89A /* day17.txt in Copy Files */,
 				E7BAC5742A0184930007ECED /* day16.txt in Copy Files */,
 				E7E95A2229FF613E00105866 /* day15.txt in Copy Files */,
@@ -143,6 +147,8 @@
 		E7B1BAAC295F82280063A337 /* Day13.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day13.swift; sourceTree = "<group>"; };
 		E7B1BAAF295F84790063A337 /* day13.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day13.txt; sourceTree = "<group>"; };
 		E7BAC5732A01848D0007ECED /* day16.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day16.txt; sourceTree = "<group>"; };
+		E7C36C8D2B0EBDEA0091C621 /* Day18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day18.swift; sourceTree = "<group>"; };
+		E7C36C922B0EC2BC0091C621 /* day18.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day18.txt; sourceTree = "<group>"; };
 		E7D280992A896B7000A7C89A /* Day17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day17.swift; sourceTree = "<group>"; };
 		E7D2809C2A896BBC00A7C89A /* day17.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = day17.txt; sourceTree = "<group>"; };
 		E7E2AB6D29A859BA0039E3C9 /* Day14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day14.swift; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 		E79265FD293ECDEE0096BCA3 /* input */ = {
 			isa = PBXGroup;
 			children = (
+				E7C36C922B0EC2BC0091C621 /* day18.txt */,
 				E7D2809C2A896BBC00A7C89A /* day17.txt */,
 				E7BAC5732A01848D0007ECED /* day16.txt */,
 				E7E95A1F29FF5E6800105866 /* day15.txt */,
@@ -242,6 +249,7 @@
 				E7E95A1C29FF498D00105866 /* Day15.swift */,
 				E70682142A00B7F10096B201 /* Day16.swift */,
 				E7D280992A896B7000A7C89A /* Day17.swift */,
+				E7C36C8D2B0EBDEA0091C621 /* Day18.swift */,
 			);
 			path = days;
 			sourceTree = "<group>";
@@ -379,6 +387,7 @@
 				E7926600293ECE4C0096BCA3 /* Day01.swift in Sources */,
 				E757B87F29538BC90007FD6F /* Day08.swift in Sources */,
 				E757B89C29594DE20007FD6F /* Day12.swift in Sources */,
+				E7C36C8E2B0EBDEA0091C621 /* Day18.swift in Sources */,
 				E757B879294EB25E0007FD6F /* Day07.swift in Sources */,
 				E757B885295539D00007FD6F /* Day09.swift in Sources */,
 			);
@@ -405,6 +414,7 @@
 				E7926614293ED9480096BCA3 /* Day01.swift in Sources */,
 				E757B88029538BC90007FD6F /* Day08.swift in Sources */,
 				E757B89D29594DE20007FD6F /* Day12.swift in Sources */,
+				E7C36C8F2B0EBE940091C621 /* Day18.swift in Sources */,
 				E757B87A294EB25E0007FD6F /* Day07.swift in Sources */,
 				E757B886295539D00007FD6F /* Day09.swift in Sources */,
 			);
